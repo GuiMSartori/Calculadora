@@ -1,5 +1,7 @@
 package com.mycompany.mavenproject1;
 
+import com.mycompany.newpackage.Calculadora;
+
 /**
  *
  * @author 17100519
@@ -110,7 +112,12 @@ public class Frame extends javax.swing.JFrame {
         String text2 = this.jTextField2.getText();
         Double numero1 = Double.parseDouble(text1);
         Double numero2 = Double.parseDouble(text2);
-        double resultado = numero1 + numero2;
+
+        Calculadora calculadora;
+        calculadora = new Calculadora();
+
+        double resultado = calculadora.somar(numero1, numero2);
+
         this.jLabel4.setText(String.valueOf(resultado));
     }//GEN-LAST:event_somar
 
@@ -135,10 +142,18 @@ public class Frame extends javax.swing.JFrame {
         String text2 = this.jTextField2.getText();
         Double numero1 = Double.parseDouble(text1);
         Double numero2 = Double.parseDouble(text2);
-        if (numero2 != 0) {
-            double resultado = numero1 / numero2;
+
+        Calculadora calculadora;
+        calculadora = new Calculadora();
+
+        Double resultado = calculadora.dividir(numero1, numero2);
+
+        if (resultado == null) {
+            this.jLabel4.setText("Can't divide by 0.");
+        } else {
             this.jLabel4.setText(String.valueOf(resultado));
         }
+
     }//GEN-LAST:event_dividir
 
     private void porcentagem(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porcentagem
@@ -146,8 +161,8 @@ public class Frame extends javax.swing.JFrame {
         String text2 = this.jTextField2.getText();
         Double numero1 = Double.parseDouble(text1);
         Double numero2 = Double.parseDouble(text2);
-        double resultado = numero1 * (numero2 / 100);
-        this.jLabel4.setText(String.valueOf(resultado));
+        Double resultado = numero2 * numero1 / 100;
+        this.jLabel4.setText(resultado.toString());
     }//GEN-LAST:event_porcentagem
 
     private void limpar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpar
